@@ -8,7 +8,9 @@ export default function Home() {
   const [triggerDiff, setTriggerDiff] = useState(false)
   const [v1spaceid, setv1spaceid] = useState('good-vampirebat-UWIpQs26BT')
   const [v1token, setv1token] = useState('056bb771-9859-4a0f-9761-ef2457e2af2a')
-  const [v2spaceid, setv2spaceid] = useState('c92be510-cfb2-4175-952d-13152b4a70a4')
+  const [v2spaceid, setv2spaceid] = useState(
+    'c92be510-cfb2-4175-952d-13152b4a70a4',
+  )
   const [v2token, setv2token] = useState('a0ac0f8f-d068-43c8-a280-e7a1470ef3c0')
   const [handle, setHandle] = useState()
 
@@ -20,7 +22,7 @@ export default function Home() {
   const handleHandle = (e) => {
     e.preventDefault()
     setTriggerDiff(true)
-    setHandle(e.target[0].value)
+    setHandle(e.target[0].value.toLowerCase())
   }
 
   const setTriggerFalse = () => {
