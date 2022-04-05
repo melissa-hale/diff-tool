@@ -63,6 +63,7 @@ export default function Query(props) {
               type="radio"
               value="product"
               name="dataType"
+              required
               checked={dataType === 'product'}
               onChange={(e) => setDataType(e.target.value)}
             />{' '}
@@ -74,6 +75,7 @@ export default function Query(props) {
               type="radio"
               value="collection"
               name="dataType"
+              required
               checked={dataType === 'collection'}
               onChange={(e) => setDataType(e.target.value)}
             />{' '}
@@ -85,6 +87,7 @@ export default function Query(props) {
               type="radio"
               value="content"
               name="dataType"
+              required
               checked={dataType === 'content'}
               onChange={(e) => setDataType(e.target.value)}
             />{' '}

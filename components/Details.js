@@ -3,7 +3,6 @@ import React from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Details(props) {
-  console.log(props)
   const [spaceDetails, setSpaceDetails] = useState(props.spaceDetails)
 
   const handleSetSpaceDetails = (e) => {
