@@ -59,37 +59,38 @@ export default function Query(props) {
         <ul className={styles.list}>
           <li>
             <input
+              id="product"
               type="radio"
               value="product"
               name="dataType"
               checked={dataType === 'product'}
               onChange={(e) => setDataType(e.target.value)}
             />{' '}
-            Product
+            <label htmlFor="product">Product</label>
           </li>
           <li>
             <input
+              id="collection"
               type="radio"
               value="collection"
               name="dataType"
               checked={dataType === 'collection'}
               onChange={(e) => setDataType(e.target.value)}
             />{' '}
-            Collection
+            <label htmlFor="collection">Collection</label>
           </li>
           <li>
             <input
+              id="content"
               type="radio"
               value="content"
               name="dataType"
               checked={dataType === 'content'}
               onChange={(e) => setDataType(e.target.value)}
             />{' '}
-            Content
+            <label htmlFor="content">Content</label>
           </li>
         </ul>
-        <br />
-        <br />
         <label>Handle:</label>
         <input
           name="handle"
