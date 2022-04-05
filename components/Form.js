@@ -8,6 +8,7 @@ export default function Form(props) {
     'c92be510-cfb2-4175-952d-13152b4a70a4',
   )
   const [v2token, setv2token] = useState('a0ac0f8f-d068-43c8-a280-e7a1470ef3c0')
+  const [v2qa, setv2qa] = useState()
 
   const handleSetSpaceDetails = (e) => {
     e.preventDefault()
@@ -16,6 +17,7 @@ export default function Form(props) {
       v1token: v1token,
       v2spaceid: v2spaceid,
       v2token: v2token,
+      v2qa: v2qa,
     }
     props.setSpaceDetails(clientDetails)
     props.showForm()
@@ -67,6 +69,33 @@ export default function Form(props) {
         />
         <br />
         <br />
+        <label>V2 QA? </label>
+        <ul className={styles.list}>
+          <li>
+            <input
+              id="true"
+              type="radio"
+              value="true"
+              name="v2qa"
+              required
+              checked={v2qa == 'true'}
+              onChange={(e) => setv2qa(e.target.value)}
+            />{' '}
+            <label htmlFor="product">Yes</label>
+          </li>
+          <li>
+            <input
+              id="false"
+              type="radio"
+              value="false"
+              name="v2qa"
+              required
+              checked={v2qa == 'false'}
+              onChange={(e) => setv2qa(e.target.value)}
+            />{' '}
+            <label htmlFor="collection">No</label>
+          </li>
+        </ul>
         <input
           className="submitButton"
           type="submit"

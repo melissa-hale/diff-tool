@@ -18,6 +18,7 @@ export default function Details(props) {
         <p>V1 Token: {spaceDetails.v1token}</p>
         <p>V2 Space ID: {spaceDetails.v2spaceid}</p>
         <p>V2 Token: {spaceDetails.v2token}</p>
+        <p>V2 QA? {spaceDetails.v2qa}</p>
         <form
           onSubmit={(e) => {
             handleSetSpaceDetails(e)
