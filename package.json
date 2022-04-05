@@ -1,5 +1,5 @@
 {
-  "name": "compare-app",
+  "name": "space-comparison-tool",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,9 +12,9 @@
     "@nacelle/client-js-sdk": "^3.7.1",
     "@nacelle/compatibility-connector": "^1.1.5",
     "@nacelle/storefront-sdk": "^1.1.2",
-    "next": "^12.1.4",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "next": "12.1.4",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
     "react-json-view-compare": "^2.0.1"
   },
   "devDependencies": {
