@@ -56,33 +56,41 @@ export default function Query(props) {
         }}
       >
         <label>Type: </label>
-        <input
-          type="radio"
-          value="product"
-          name="dataType"
-          checked={dataType === 'product'}
-          onChange={(e) => setDataType(e.target.value)}
-        />{' '}
-        Product
-        <input
-          type="radio"
-          value="collection"
-          name="dataType"
-          checked={dataType === 'collection'}
-          onChange={(e) => setDataType(e.target.value)}
-        />{' '}
-        Collection
-        <input
-          type="radio"
-          value="content"
-          name="dataType"
-          checked={dataType === 'content'}
-          onChange={(e) => setDataType(e.target.value)}
-        />{' '}
-        Content
+        <ul className={styles.list}>
+          <li>
+            <input
+              type="radio"
+              value="product"
+              name="dataType"
+              checked={dataType === 'product'}
+              onChange={(e) => setDataType(e.target.value)}
+            />{' '}
+            Product
+          </li>
+          <li>
+            <input
+              type="radio"
+              value="collection"
+              name="dataType"
+              checked={dataType === 'collection'}
+              onChange={(e) => setDataType(e.target.value)}
+            />{' '}
+            Collection
+          </li>
+          <li>
+            <input
+              type="radio"
+              value="content"
+              name="dataType"
+              checked={dataType === 'content'}
+              onChange={(e) => setDataType(e.target.value)}
+            />{' '}
+            Content
+          </li>
+        </ul>
         <br />
         <br />
-        <label>V2 Space ID:</label>
+        <label>Handle:</label>
         <input
           name="handle"
           type="text"

@@ -12,6 +12,10 @@
     align-items: center;
   }
   
+  .list {
+    list-style-type: none;
+}
+
   .footer a {
     display: flex;
     justify-content: center;
