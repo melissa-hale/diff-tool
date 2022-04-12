@@ -1,51 +1,29 @@
 import React, { useState } from 'react'
 import styles from '../styles/Home.module.css'
-import { v1client, v2CCclient } from '../services/clients'
+import { getv1datapromise, getv2datapromise } from '../utils/queries'
 
 export default function Query(props) {
   const [handle, setHandle] = useState()
   const [dataType, setDataType] = useState()
 
-  const retriveNacelleData = (e) => {
+  console.log(handle)
+  console.log(props.spaceDetails)
+  console.log(dataType)
+
+  const retriveNacelleData = async (e) => {
     e.preventDefault()
 
-    const fetchData = async () => {
-      if (dataType == 'content') {
-        const v1data = await v1client(props.spaceDetails).data.content({
-          handle: handle,
-          type: 'page',
-        })
-        const v2data = await v2CCclient(props.spaceDetails).data.content({
-          handle: handle,
-          type: 'page',
-        })
-        return [v1data, v2data]
-      } else if (dataType == 'product') {
-        const v1data = await v1client(props.spaceDetails).data.product({
-          handle: handle,
-        })
-        const v2data = await v2CCclient(props.spaceDetails).data.product({
-          handle: handle,
-        })
-        return [v1data, v2data]
-      } else if (dataType == 'collection') {
-        const v1data = await v1client(props.spaceDetails).data.collection({
-          handle: handle,
-        })
-        const v2data = await v2CCclient(props.spaceDetails).data.collection({
-          handle: handle,
-        })
-        return [v1data, v2data]
-      }
-    }
+    let promises = []
+    promises.push(getv1datapromise(props.spaceDetails, handle, dataType))
+    promises.push(getv2datapromise(props.spaceDetails, handle, dataType))
 
-    fetchData().then((nacelleData) =>
-      props.setNacelleData({
-        handle: handle,
-        v1data: nacelleData[0],
-        v2data: nacelleData[1],
-      }),
-    )
+    const data = await Promise.all(promises)
+
+    props.setNacelleData({
+      handle: handle,
+      v1data: data[0],
+      v2data: data[1],
+    })
   }
 
   return (
@@ -99,7 +77,7 @@ export default function Query(props) {
           name="handle"
           type="text"
           onChange={(e) => setHandle(e.target.value)}
-          value={handle}
+          value={handle ?? ''}
         />
         <input className="submitButton" type="submit" value="Get diff" />
       </form>
