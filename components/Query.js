@@ -5,17 +5,18 @@ import { getv1datapromise, getv2datapromise } from '../utils/queries'
 export default function Query(props) {
   const [handle, setHandle] = useState()
   const [dataType, setDataType] = useState()
-
-  console.log(handle)
-  console.log(props.spaceDetails)
-  console.log(dataType)
+  const [contentType, setContentType] = useState()
 
   const retriveNacelleData = async (e) => {
     e.preventDefault()
 
     let promises = []
-    promises.push(getv1datapromise(props.spaceDetails, handle, dataType))
-    promises.push(getv2datapromise(props.spaceDetails, handle, dataType))
+    promises.push(
+      getv1datapromise(props.spaceDetails, handle, dataType, contentType),
+    )
+    promises.push(
+      getv2datapromise(props.spaceDetails, handle, dataType, contentType),
+    )
 
     const data = await Promise.all(promises)
 
@@ -43,7 +44,10 @@ export default function Query(props) {
               name="dataType"
               required
               checked={dataType === 'product'}
-              onChange={(e) => setDataType(e.target.value)}
+              onChange={(e) => {
+                setDataType(e.target.value)
+                setContentType()
+              }}
             />{' '}
             <label htmlFor="product">Product</label>
           </li>
@@ -55,7 +59,10 @@ export default function Query(props) {
               name="dataType"
               required
               checked={dataType === 'collection'}
-              onChange={(e) => setDataType(e.target.value)}
+              onChange={(e) => {
+                setDataType(e.target.value)
+                setContentType()
+              }}
             />{' '}
             <label htmlFor="collection">Collection</label>
           </li>
@@ -70,6 +77,19 @@ export default function Query(props) {
               onChange={(e) => setDataType(e.target.value)}
             />{' '}
             <label htmlFor="content">Content</label>
+            {dataType === 'content' && (
+              <>
+                <label> - Type:</label>
+                <input
+                  required
+                  id="contentType"
+                  name="contentType"
+                  type="text"
+                  onChange={(e) => setContentType(e.target.value)}
+                  value={contentType ?? ''}
+                />
+              </>
+            )}
           </li>
         </ul>
         <label>Handle:</label>
